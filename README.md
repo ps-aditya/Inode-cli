@@ -40,7 +40,7 @@ inspection and prediction output are next.
 ## Getting started
 
 ```bash
-git clone https://github.com/<your-org>/inode-cli.git
+git clone https://github.com/ps-aditya/inode-cli.git
 cd inode-cli
 npm install
 npm run build
