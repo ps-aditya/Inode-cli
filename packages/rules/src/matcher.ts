@@ -1,4 +1,4 @@
-import type { ParsedCommand } from '@tra/shared';
+import type { ParsedCommand } from '@inode/shared';
 import type { Rule, RuleCondition, RuleSet } from './types';
 
 function evaluateCondition(condition: RuleCondition, command: ParsedCommand): boolean {

@@ -4,7 +4,7 @@ This directory will hold example input/output pairs for every supported
 command, e.g.:
 
 ```
-$ tra check "git push --force"
+$ inode check "git push --force"
 ```
 
 ```json

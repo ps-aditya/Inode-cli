@@ -1,8 +1,8 @@
-# Terminal Risk Analyzer
+# inode-cli
 
 > Know what a command will actually do before you press Enter.
 
-Terminal Risk Analyzer (`tra`) inspects the command you're about to run —
+inode-cli (`inode`) inspects the command you're about to run —
 starting with Git — and tells you, in plain language, what it will change,
 who it will affect, and whether it can be undone.
 
@@ -40,8 +40,8 @@ inspection and prediction output are next.
 ## Getting started
 
 ```bash
-git clone https://github.com/<your-org>/terminal-risk-analyzer.git
-cd terminal-risk-analyzer
+git clone https://github.com/<your-org>/inode-cli.git
+cd inode-cli
 npm install
 npm run build
 ```
@@ -85,7 +85,7 @@ node apps/cli/dist/index.js parse git push --force
 ## Project structure
 
 ```
-terminal-risk-analyzer/
+inode-cli/
 │
 ├── apps/
 │   └── cli/            # The command-line entrypoint (Commander.js)

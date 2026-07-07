@@ -1,4 +1,4 @@
-import type { RiskAssessment } from '@tra/shared';
+import type { RiskAssessment } from '@inode/shared';
 
 /**
  * Renders a RiskAssessment to the terminal using chalk/boxen/ora.

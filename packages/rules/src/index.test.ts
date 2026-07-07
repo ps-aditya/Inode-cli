@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseCommand } from '@tra/parser';
+import { parseCommand } from '@inode/parser';
 import { assessRisk } from './index';
 
 describe('assessRisk', () => {

@@ -1,5 +1,5 @@
 {
-  "name": "terminal-risk-analyzer",
+  "name": "inode-cli",
   "version": "0.1.0",
   "private": true,
   "description": "A CLI that tells you what a terminal command will actually do before you run it — starting with Git.",

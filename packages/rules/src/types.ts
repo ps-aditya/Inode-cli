@@ -1,4 +1,4 @@
-import type { RiskLevel } from '@tra/shared';
+import type { RiskLevel } from '@inode/shared';
 
 /**
  * A single condition a rule checks against a ParsedCommand.

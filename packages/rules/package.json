@@ -1,5 +1,5 @@
 {
-  "name": "@tra/rules",
+  "name": "@inode/rules",
   "version": "0.1.0",
   "private": true,
   "main": "dist/index.js",
@@ -8,9 +8,9 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@tra/shared": "*"
+    "@inode/shared": "*"
   },
   "devDependencies": {
-    "@tra/parser": "*"
+    "@inode/parser": "*"
   }
 }

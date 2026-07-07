@@ -1,4 +1,4 @@
-import type { ParsedCommand, RepoContext, RiskAssessment } from '@tra/shared';
+import type { ParsedCommand, RepoContext, RiskAssessment } from '@inode/shared';
 
 /**
  * Sprint 4 (later): combines rule-engine output with RepoContext

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { parseCommand } from '@tra/parser';
-import { assessRisk } from '@tra/rules';
+import { parseCommand } from '@inode/parser';
+import { assessRisk } from '@inode/rules';
 
 const program = new Command();
 
 program
-  .name('tra')
-  .description('Terminal Risk Analyzer — see what a command will actually do before you run it.')
+  .name('inode')
+  .description('inode-cli — see what a command will actually do before you run it.')
   .version('0.1.0');
 
 program

@@ -1,4 +1,4 @@
-import type { ParsedCommand } from '@tra/shared';
+import type { ParsedCommand } from '@inode/shared';
 import { tokenize } from './tokenize';
 
 /**
@@ -61,4 +61,4 @@ export function parseCommand(raw: string): ParsedCommand {
 }
 
 export { tokenize } from './tokenize';
-export type { ParsedCommand } from '@tra/shared';
+export type { ParsedCommand } from '@inode/shared';

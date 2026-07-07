@@ -18,4 +18,4 @@ paste the exact command here
 
 - OS:
 - Node version:
-- `tra` version:
+- `inode` version:

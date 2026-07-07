@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for considering contributing to Terminal Risk Analyzer. This project
+Thanks for considering contributing to inode-cli. This project
 is early, moving daily, and intentionally built to make outside contribution
 easy once it's ready for it.
 

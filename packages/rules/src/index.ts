@@ -1,4 +1,4 @@
-import type { ParsedCommand, RiskAssessment } from '@tra/shared';
+import type { ParsedCommand, RiskAssessment } from '@inode/shared';
 import { matchRules } from './matcher';
 import gitRules from './data/git.rules.json';
 import rmRules from './data/rm.rules.json';
