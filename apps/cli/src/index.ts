@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import { parseCommand } from '@inode/parser';
-import { assessRisk } from '@inode/rules';
 import { collectRepoContext } from '@inode/context';
+import { analyzeCommand } from '@inode/predictor';
 
 const program = new Command();
 
@@ -27,8 +27,7 @@ program
   .allowUnknownOption()
   .action((commandParts: string[]) => {
     const raw = commandParts.join(' ');
-    const parsed = parseCommand(raw);
-    const assessment = assessRisk(parsed);
+    const assessment = analyzeCommand(raw, process.cwd());
 
     if (assessment.level === 'LOW') {
       console.log(`✓ ${raw} — looks safe (no rule matched)`);
