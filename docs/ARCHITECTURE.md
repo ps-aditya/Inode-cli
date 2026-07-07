@@ -34,11 +34,11 @@ raw command string
 
 ## Package responsibilities
 
-| Package               | Responsibility                                            |
-|------------------------|------------------------------------------------------------|
-| `packages/shared`      | Shared TypeScript types used across all packages           |
-| `packages/parser`      | Raw string → `ParsedCommand`                                |
-| `packages/rules`       | `ParsedCommand` → base `RiskAssessment` (JSON rules, no AI) |
-| `packages/predictor`   | Base `RiskAssessment` + `RepoContext` → final prediction    |
-| `packages/output`      | `RiskAssessment` → formatted terminal output                 |
-| `apps/cli`             | Wires everything together behind a Commander.js CLI         |
+| Package              | Responsibility                                              |
+| -------------------- | ----------------------------------------------------------- |
+| `packages/shared`    | Shared TypeScript types used across all packages            |
+| `packages/parser`    | Raw string → `ParsedCommand`                                |
+| `packages/rules`     | `ParsedCommand` → base `RiskAssessment` (JSON rules, no AI) |
+| `packages/predictor` | Base `RiskAssessment` + `RepoContext` → final prediction    |
+| `packages/output`    | `RiskAssessment` → formatted terminal output                |
+| `apps/cli`           | Wires everything together behind a Commander.js CLI         |

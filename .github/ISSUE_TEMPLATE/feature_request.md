@@ -9,9 +9,7 @@ labels: enhancement
 
 **Command(s) involved**
 
-
 **What should happen**
-
 
 **Anything deferred/out of scope this touches?**
 Check `docs/plan.md` "Deferred Ideas" before filing.

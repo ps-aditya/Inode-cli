@@ -18,7 +18,7 @@ npm test
 
 ## Commit conventions
 
-Every commit message should answer one question: *what does this commit do?*
+Every commit message should answer one question: _what does this commit do?_
 
 Format: `type(scope): short description`
 
@@ -39,9 +39,9 @@ Common scopes: `parser`, `rules`, `predictor`, `output`, `context`, `cli`.
 
 Every issue should have exactly one label:
 
-| Label              | Meaning                                  |
-|--------------------|-------------------------------------------|
-| `bug`              | Something isn't working                  |
+| Label              | Meaning                                   |
+| ------------------ | ----------------------------------------- |
+| `bug`              | Something isn't working                   |
 | `enhancement`      | New feature or improvement                |
 | `rule`             | A new or updated risk rule                |
 | `git`              | Git-specific behavior                     |
