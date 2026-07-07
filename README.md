@@ -1,4 +1,4 @@
-# inode-cli
+# Inode CLI
 
 > Know what a command will actually do before you press Enter.
 
