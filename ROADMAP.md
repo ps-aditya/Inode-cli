@@ -49,10 +49,16 @@ product context (objective, success criteria, risks, open questions).
 - [x] 8 tests against real temp repos, including a bare "remote" plus
       a second clone simulating a collaborator's unpulled commits
 
-## Output Formatter (parallel track)
+## Output Formatter ✅ (done)
 
-- [ ] Render `RiskAssessment` with chalk/boxen/ora
-- [ ] `--explain` flag to show which rule matched and why
+- [x] Render `RiskAssessment` with chalk/boxen — color-coded by risk
+      level (green/yellow/red/magenta), boxed panel for anything above
+      LOW, quiet single line for LOW risk (per the manifesto's
+      "prefer silence over noise")
+- [x] Wired into CLI: `inode check` now uses `renderAssessment()`
+      instead of manual `console.log` formatting
+- [ ] `--explain` flag to show which rule matched and why (the data is
+      already there via `matchedRule` — just needs a CLI flag)
 
 ## Launch
 
