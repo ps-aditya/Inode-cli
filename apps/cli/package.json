@@ -13,6 +13,7 @@
   "dependencies": {
     "@inode/shared": "*",
     "@inode/parser": "*",
+    "@inode/rules": "*",
     "@inode/context": "*",
     "@inode/predictor": "*",
     "@inode/output": "*",

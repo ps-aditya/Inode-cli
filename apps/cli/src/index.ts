@@ -4,6 +4,8 @@ import { parseCommand } from '@inode/parser';
 import { collectRepoContext } from '@inode/context';
 import { analyzeCommand } from '@inode/predictor';
 import { renderAssessment } from '@inode/output';
+import { getRuleById, describeRule } from '@inode/rules';
+import chalk from 'chalk';
 
 const program = new Command();
 
@@ -25,11 +27,34 @@ program
 program
   .command('check <command...>')
   .description('Assess the risk of a command before you run it')
+  .option('--explain', 'Show which rule matched and exactly why')
   .allowUnknownOption()
-  .action((commandParts: string[]) => {
+  .action((commandParts: string[], options: { explain?: boolean }) => {
     const raw = commandParts.join(' ');
     const assessment = analyzeCommand(raw, process.cwd());
     console.log(renderAssessment(raw, assessment));
+
+    if (!options.explain) return;
+
+    if (!assessment.matchedRule) {
+      console.log(chalk.dim('\nNo rule matched — nothing to explain.'));
+      return;
+    }
+
+    const rule = getRuleById(assessment.matchedRule);
+    if (!rule) {
+      console.log(
+        chalk.dim(
+          `\nRule "${assessment.matchedRule}" matched, but its definition could not be found.`,
+        ),
+      );
+      return;
+    }
+
+    console.log('');
+    for (const line of describeRule(rule)) {
+      console.log(chalk.dim(line));
+    }
   });
 
 program
