@@ -57,8 +57,9 @@ product context (objective, success criteria, risks, open questions).
       "prefer silence over noise")
 - [x] Wired into CLI: `inode check` now uses `renderAssessment()`
       instead of manual `console.log` formatting
-- [ ] `--explain` flag to show which rule matched and why (the data is
-      already there via `matchedRule` — just needs a CLI flag)
+- [x] `--explain` flag to show which rule matched and why — prints the
+      rule name and every condition that had to match (e.g. "command
+      equals \"git\"", "flags includes any of: \"--force\", \"-f\"")
 
 ## Launch
 
