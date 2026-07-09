@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@inode/shared": "*",
-    "chalk": "^4.1.2",
-    "boxen": "^5.1.2"
+    "chalk": "^4.1.2"
   }
 }

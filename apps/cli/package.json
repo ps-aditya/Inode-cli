@@ -18,9 +18,7 @@
     "@inode/predictor": "*",
     "@inode/output": "*",
     "chalk": "^4.1.2",
-    "boxen": "^5.1.2",
-    "commander": "^12.1.0",
-    "ora": "^5.4.1"
+    "commander": "^12.1.0"
   },
   "devDependencies": {
     "ts-node": "^10.9.2"

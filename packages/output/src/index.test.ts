@@ -13,7 +13,7 @@ describe('renderAssessment', () => {
     const output = renderAssessment('git status', assessment);
     expect(output).toContain('git status');
     expect(output).toContain('looks safe');
-    expect(output).not.toContain('Risk:');
+    expect(output.split('\n').length).toBe(1);
   });
 
   it('renders the explanatory effect for a LOW assessment that still has one', () => {
@@ -29,9 +29,10 @@ describe('renderAssessment', () => {
     };
     const output = renderAssessment('git push --force', assessment);
     expect(output).toContain('No remote is configured');
+    expect(output.split('\n').length).toBe(1);
   });
 
-  it('renders a full panel for HIGH risk with effects, undo, and confidence', () => {
+  it('renders a single line for HIGH risk with effects, undo, and confidence', () => {
     const assessment: RiskAssessment = {
       level: 'HIGH',
       confidence: 90,
@@ -44,16 +45,19 @@ describe('renderAssessment', () => {
       matchedRule: 'git-force-push',
     };
     const output = renderAssessment('git push --force', assessment);
-    expect(output).toContain('Risk: HIGH');
-    expect(output).toContain('Rewrites remote history');
-    expect(output).toContain('Affects 1 collaborator');
+    expect(output.split('\n').length).toBe(1); // advisory, single line — not a panel
+    expect(output).toContain('HIGH');
+    expect(output).toContain('git push --force');
+    expect(output).toContain('rewrites remote history');
+    expect(output).toContain('affects 1 collaborator');
     expect(output).toContain('git reflog');
     expect(output).toContain('90%');
-    expect(output).toContain('git-force-push');
-    expect(output).toContain('git push --force'); // boxen title
+    // matchedRule is intentionally NOT shown by default — that's what
+    // --explain is for, to keep this line uncluttered.
+    expect(output).not.toContain('git-force-push');
   });
 
-  it('renders "Not possible" for undo when undoable is false', () => {
+  it('renders "not possible" for undo when undoable is false', () => {
     const assessment: RiskAssessment = {
       level: 'CRITICAL',
       confidence: 95,
@@ -61,17 +65,12 @@ describe('renderAssessment', () => {
       undoable: false,
     };
     const output = renderAssessment('rm -rf /tmp/foo', assessment);
-    expect(output).toContain('Not possible');
-    expect(output).toContain('Risk: CRITICAL');
+    expect(output).toContain('not possible');
+    expect(output).toContain('CRITICAL');
+    expect(output.split('\n').length).toBe(1);
   });
 
-  // Regression test: boxen@5 has a real bug where, in a non-TTY
-  // environment, a line long enough to need internal wrapping causes it
-  // to drop ALL newlines and collapse the entire box into one line. This
-  // exact scenario (a long effect description, matching the real
-  // fs-rm-recursive-force rule text) reproduced it. Guards against ever
-  // reintroducing an unwrapped long line.
-  it('keeps proper multi-line output when an effect description is long', () => {
+  it('stays a single line even with a long effect description (no box, nothing to collapse)', () => {
     const assessment: RiskAssessment = {
       level: 'CRITICAL',
       confidence: 95,
@@ -85,17 +84,12 @@ describe('renderAssessment', () => {
       matchedRule: 'fs-rm-recursive-force',
     };
     const output = renderAssessment('rm -rf /tmp/foo', assessment);
-    const lineCount = output.split('\n').length;
-    expect(lineCount).toBeGreaterThan(10); // a collapsed box would be 1-3 lines
+    expect(output.split('\n').length).toBe(1);
     expect(output).toContain('deletion bypasses');
     expect(output).toContain('entirely');
   });
 
-  // Regression test: an extremely long raw command (used as the boxen
-  // title) hit the exact same collapse bug via a different path — boxen
-  // titles can't be wrapped, so we truncate instead. Guards against ever
-  // passing an unbounded title straight to boxen again.
-  it('keeps proper multi-line output and truncates an extremely long raw command', () => {
+  it('truncates an extremely long raw command instead of printing it in full', () => {
     const longRaw = `git push --force ${'x'.repeat(150)}`;
     const assessment: RiskAssessment = {
       level: 'HIGH',
@@ -106,18 +100,12 @@ describe('renderAssessment', () => {
       matchedRule: 'git-force-push',
     };
     const output = renderAssessment(longRaw, assessment);
-    const lineCount = output.split('\n').length;
-    expect(lineCount).toBeGreaterThan(10);
+    expect(output.split('\n').length).toBe(1);
     expect(output).toContain('…');
-    expect(output).not.toContain('x'.repeat(150)); // full unbounded title never reaches boxen
+    expect(output).not.toContain('x'.repeat(150));
   });
 
-  // Regression test: found during end-to-end QA. The git-hard-reset
-  // rule's real undoHint ("git reflog, but uncommitted working-tree
-  // changes are gone for good") is 68+ chars and hit the exact same
-  // boxen collapse bug, because the undo line wasn't wrapped like the
-  // effect lines were. Guards against ever un-wrapping it again.
-  it('keeps proper multi-line output when the undo hint is long', () => {
+  it('handles a long undo hint on a single line without issue', () => {
     const assessment: RiskAssessment = {
       level: 'HIGH',
       confidence: 90,
@@ -127,8 +115,7 @@ describe('renderAssessment', () => {
       matchedRule: 'git-hard-reset',
     };
     const output = renderAssessment('git reset --hard HEAD', assessment);
-    const lineCount = output.split('\n').length;
-    expect(lineCount).toBeGreaterThan(8);
+    expect(output.split('\n').length).toBe(1);
     expect(output).toContain('gone for good');
   });
 });

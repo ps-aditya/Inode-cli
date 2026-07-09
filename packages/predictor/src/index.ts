@@ -96,7 +96,7 @@ export function predict(
         // should reflect what we actually know, and we genuinely don't
         // know how stale this is — so we say so instead of hiding it.
         effects.push({
-          description: `Numbers reflect your last fetch of ${upstream} — run "git fetch" first to be sure this is current`,
+          description: `based on last fetch of ${upstream} — run "git fetch" to confirm`,
         });
       } else {
         effects.push({
